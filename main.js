@@ -20,7 +20,7 @@ app.on('ready', function()
   // Cria a janela do browser.
   mainWindow = new BrowserWindow({width: 800, height: 600, frame : true});
 
-  // mainWindow.maximize();
+  mainWindow.maximize();
 
 
   mainWindow.setMenu(null);
