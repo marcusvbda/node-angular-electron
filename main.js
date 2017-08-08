@@ -18,7 +18,7 @@ app.on('window-all-closed', function()
 app.on('ready', function() 
 {
   // Cria a janela do browser.
-  mainWindow = new BrowserWindow({icon: __dirname + '/assets/img/favicon.png',fullscreen:true, frame : true});
+  mainWindow = new BrowserWindow({fullscreen:true, frame : true});
 
   // mainWindow.maximize();
 
