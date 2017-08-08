@@ -5,19 +5,25 @@ angularApp.factory("$model", function($db)
 	model._primary = "id";
 	model._query   = "select";
 	model._table   = "";
-	model._field  = "*";
+	model._field   = "*";
+	model._unions  = "";
 	model._condition = "where 1=1";
 
 	model.table = function(table)
 	{
-		this._table = table;
-		
+		this._table = table;		
 		return this;
 	}
 
-	model.select = function(field)
+	model.select = function(fields)
 	{
-		this._field = field ;
+		this._field =" "+fields+" ";
+		return this;
+	}
+
+	model.join = function(table,condition)
+	{
+		this._unions += " join "+table+" on "+condition[0]+condition[1]+condition[2];
 		return this;
 	}
 
@@ -72,7 +78,7 @@ angularApp.factory("$model", function($db)
 
 	model.get = function()
 	{
-	    var query = "select "+this._field+" from "+this._table+" "+this._condition;
+	    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
 	    var rows = model.run(query);
     	return rows;
     }
@@ -86,7 +92,7 @@ angularApp.factory("$model", function($db)
     model.run = function(query)
     {
     	console.log(query);
-    	return rows = $db.run(query);
+    	// return rows = $db.run(query);
     }
 
 	return model;
