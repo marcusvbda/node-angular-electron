@@ -18,9 +18,9 @@ app.on('window-all-closed', function()
 app.on('ready', function() 
 {
   // Cria a janela do browser.
-  mainWindow = new BrowserWindow({width: 800, height: 600, frame : true});
+  mainWindow = new BrowserWindow({icon: __dirname + '/assets/img/favicon.png',fullscreen:true, frame : true});
 
-  mainWindow.maximize();
+  // mainWindow.maximize();
 
 
   mainWindow.setMenu(null);
@@ -30,10 +30,11 @@ app.on('ready', function()
   mainWindow.loadURL('file://' + __dirname + '/index.html');
  
   // aber o DevTools. (console, inspecionar elemento, etc)
-  mainWindow.webContents.openDevTools(); 
+  // mainWindow.webContents.openDevTools(); 
  
   // Evento emitido quando a janela é fechada, usado para destruir instancia.
-  mainWindow.on('closed', function() {
+  mainWindow.on('closed', function() 
+  {
     mainWindow = null;
   });
 
@@ -43,7 +44,7 @@ app.on('ready', function()
 
 
 // para gerar executável
-// npm run win32s
+// npm run win32
 // npm run win64  
 // npm run linux64
 // npm run osx

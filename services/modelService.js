@@ -92,7 +92,7 @@ angularApp.factory("$model", function($db)
     model.run = function(query)
     {
     	console.log(query);
-    	// return rows = $db.run(query);
+    	return rows = $db.run(query);
     }
 
 	return model;
