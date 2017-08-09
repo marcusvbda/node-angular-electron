@@ -1,8 +1,9 @@
-angularApp.controller('mainController', function($scope,$usuarios)
+angularApp.controller('mainController', function($env,$scope,$users)
 {	
+    $scope.env = $env;
     $scope.firstName = 'Vinicius';
-    $scope.lastName = "Bassalobre";
-    $scope.fullName = function() 
+    $scope.lastName  = "Bassalobre";
+    $scope.fullName  = function() 
     {
         return $scope.firstName + " " + $scope.lastName;
     };
@@ -17,7 +18,7 @@ angularApp.controller('mainController', function($scope,$usuarios)
 
     $scope.sqlite = function()
     {
-        var teste = $usuarios.get();        
+        var teste = $users.get();        
         console.log(teste);
     };
 

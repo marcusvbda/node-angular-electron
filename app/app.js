@@ -1,1 +1,1 @@
-var angularApp = angular.module('APP', ['ngRoute']);
+var angularApp = angular.module('APP', ['ngRoute','ngValidate']);

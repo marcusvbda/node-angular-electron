@@ -1,0 +1,37 @@
+.topo
+{
+  background-color:#9c27b0;
+  padding-left: 5px;
+}
+.divTopo
+{
+  color: white;
+  font-weight: bold;
+}
+.btnTopo
+{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  background-color:transparent;
+  border:none;
+}
+.hred:hover
+{
+  background-color:red;
+  opacity: 0.5;
+}
+.hgrey:hover
+{
+  background-color:grey;        
+  opacity: 0.5;
+}
+
+.vertical-center 
+{
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}

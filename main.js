@@ -11,7 +11,11 @@ function createWindow()
   mainWindow = new BrowserWindow({fullscreen:true, frame : false, transparent:false, icon:__dirname+"/assets/img/icons/favicon.png"});
   mainWindow.setMenu(null);
   mainWindow.loadURL('file://' + __dirname + '/index.html');
-  mainWindow.webContents.openDevTools();   
+
+  // console
+  // mainWindow.webContents.openDevTools(); 
+
+
   mainWindow.on('closed', function() 
   {
     mainWindow = null;

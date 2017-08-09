@@ -26,3 +26,4 @@ $helper.time = function()
         seg = "0" + seg  
 	return hour+":"+min+":"+seg;   
 }
+

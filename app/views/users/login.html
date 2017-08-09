@@ -1,0 +1,45 @@
+<div class="content">
+	<div class="container-fluid">
+		<div class="row vertical-center">
+			<div class="col-md-4"></div>
+		    <div class="col-md-4">
+		        <div class="card">
+		            <div class="card-header" data-background-color="purple">
+		                <h4 class="title">Login</h4>
+						<p class="category">Preencha as informações para acessar o sistema</p>
+		            </div>
+		            <div class="card-content" >
+
+
+		                <form onsubmit="return false;" name="frm_login" ng-submit="login(frm_login)" ng-validate="validationOptions">                
+
+		                    <div class="row">
+		                        <div class="col-md-12">
+									<div class="form-group label-floating">
+										<label class="control-label">Usuário</label>
+										<input type="text" class="form-control text-center" name="username" required maxlength="50"  ng-model="username" autofocus> 
+									</div>
+		                        </div>		                        
+		                    </div>
+
+		                    <div class="row">
+		                        <div class="col-md-12">
+									<div class="form-group label-floating">
+										<label class="control-label">Senha</label>
+										<input type="password" class="form-control text-center" name="password" required maxlength="50" ng-model="password">
+									</div>
+		                        </div>		                        
+		                    </div>
+
+		                    <button class="btn btn-primary pull-right" type="submit">Entrar</button>
+
+		                </form>
+
+
+		            </div>
+		        </div>
+		    </div>
+			<div class="col-md-4"></div>		    
+		</div>
+	</div>
+</div>
