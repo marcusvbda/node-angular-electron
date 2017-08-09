@@ -13,8 +13,12 @@
     "build": "electron-packager . --all"
   },
   "devDependencies": {
-   "electron-prebuilt": "^0.36.0",
-    "electron-packager":"^6.0.0",
-    "sqlite-sync":"^0.2.1"
+    "electron-prebuilt": "^0.36.0",
+    "electron-packager": "^6.0.0",
+    "sqlite-sync": "^0.2.1"
+  },
+  "dependencies": {
+    "electron": "^1.6.11",
+    "jquery": "^3.2.1"
   }
 }
