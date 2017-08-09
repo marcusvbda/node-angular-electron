@@ -125,6 +125,10 @@ $(document).ready(function()
         remote.BrowserWindow.getFocusedWindow().close();
       },["Sim","Não"]); 
     });
+    $("#btn_minimize").click(function()
+    {
+      remote.BrowserWindow.getFocusedWindow().minimize();
+    });
 });
 
 

@@ -14,7 +14,7 @@ function createWindow()
 
   // console
   // mainWindow.webContents.openDevTools(); 
-
+  // mainWindow.maximize();
 
   mainWindow.on('closed', function() 
   {
