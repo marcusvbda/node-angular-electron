@@ -34,14 +34,11 @@ angularApp.controller('userController', function($env,$scope,$location,$users)
 	    {
 	    	var users = $users
 	    		.where(["username","=",$scope.username.trim()])
-	    			.where(["password","=",$scope.password.trim()])
+	    			.where(["password","=",$core.md5($scope.password.trim())])
 	    				.get();
-	    	console.log($scope.username.trim());
-	    	console.log($scope.password.trim());
-	    	console.log(users.length);
 	    	if (users.length<=0)
 	    	{
-	    		return $msg.show("Ooops","Senha incorreta ou usuário inexistente","error");
+	    		return $core.msg("Ooops","Senha incorreta ou usuário inexistente","error");
 	    	}
 	    	else
 	    	{

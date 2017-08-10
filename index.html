@@ -44,7 +44,8 @@
 
       <script src="./assets/js/demo.js"></script>
 
-      <script src="./app/helper.js"></script>    
+      <script src="./services/coreService.js"></script>
+
       <script src="./node_modules/jquery-validation/dist/jquery.validate.min.js"></script>    
       <link href="./assets/css/custom.css" rel="stylesheet" />
 
@@ -59,7 +60,7 @@
           <div class="topo" > 
             <div class="row">
               <div class="col-md-4 text-left divTopo">
-                <script type="text/javascript">document.write($helper.date());</script>  
+                <script type="text/javascript">document.write($core.date());</script>  
                 -
                 <span id="hora"></span>
               </div>
@@ -91,11 +92,12 @@
       <script src="./node_modules/angular/angular.min.js"></script>
       <script src="./node_modules/angular/angular-route.js"></script>  
       <script src="./node_modules/jpkleemans-angular-validate/dist/angular-validate.min.js"></script>    
+
+   
            
       <script src="./app/app.js"></script>
       <script src="./app/routes.js"></script>
       <script src="./services/envService.js"></script>
-      <script src="./services/msgService.js"></script>
       <script src="./services/dbService.js"></script>
       <script src="./services/modelService.js"></script>
       <script src="./app/controllers/mainController.js"></script>
@@ -110,7 +112,7 @@
 <script type="text/javascript">
 window.setInterval(function()
 {
-  $('#hora').html($helper.time());
+  $('#hora').html($core.time());
 },1000);
 
 
@@ -120,7 +122,7 @@ $(document).ready(function()
     const { remote } = require('electron');
     $("#btn_exit").click(function()
     {
-      $msg.confirm("Confirmação","Deseja mesmo sair do sistema ?","warning",function()
+      $core.confirm("Confirmação","Deseja mesmo sair do sistema ?","warning",function()
       {
         remote.BrowserWindow.getFocusedWindow().close();
       },["Sim","Não"]); 
