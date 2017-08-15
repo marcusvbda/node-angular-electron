@@ -16,10 +16,9 @@ angularApp.controller('mainController', function($env,$scope,$users)
         },["Confirmar","Cancelar"]);
     };
 
-    $scope.sqlite = function()
+    $scope.teste = function()
     {
-        var teste = $users.get();        
-        console.log(teste);
+        return console.log($auth.user);
     };
 
 

@@ -32,19 +32,12 @@ angularApp.controller('userController', function($env,$scope,$location,$users)
     {
 	    if(form.validate()) 
 	    {
-	    	var users = $users
-	    		.where(["username","=",$scope.username.trim()])
-	    			.where(["password","=",$core.md5($scope.password.trim())])
-	    				.get();
-	    	if (users.length<=0)
-	    	{
-	    		return $core.msg("Ooops","Senha incorreta ou usuário inexistente","error");
-	    	}
+	    	var info = {"username":$scope.username.trim(),"password":$core.md5($scope.password.trim())};
+	    	if ($auth.login(info,$users))
+	        	$location.path("/dashboard");	    		
 	    	else
-	    	{
-	    		// salva o auth
-	        	$location.path("/dashboard");
-	    	}
+	    		return $core.msg("Ooops","Senha incorreta ou usuário inexistente","error");
+
 	    }
 	}
 

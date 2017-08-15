@@ -39,7 +39,6 @@
 
       <script src="./assets/js/bootstrap-notify.js"></script>
 
-      <script type="text/javascript" src="./assets/js/maps.js"></script>
       <script src="./assets/js/material-dashboard.js"></script>
 
       <script src="./assets/js/demo.js"></script>
@@ -56,13 +55,15 @@
     </style>
 
 
-    <body ng-controller="mainController" ">
+      <body>
           <div class="topo" > 
             <div class="row">
               <div class="col-md-4 text-left divTopo">
                 <script type="text/javascript">document.write($core.date());</script>  
                 -
-                <span id="hora"></span>
+                <span id="hora">
+                  <script type="text/javascript">document.write($core.time());</script>  
+                </span>
               </div>
               <div class="col-md-4 text-center divTopo">
                 <span> {{env['name']}} </span>                
@@ -74,18 +75,8 @@
             </div>
           </div>
 
-      <div class="wrapper">
-
-          <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div id="main">
-                      <div ng-view></div>
-                    </div>
-                </div>
-            </div>
-          </div>
-
+      <div class="wrapper" style="overflow-y:hidden;overflow-x: hidden;">
+          <div ng-view></div>
       </div>
 
 
@@ -97,6 +88,7 @@
            
       <script src="./app/app.js"></script>
       <script src="./app/routes.js"></script>
+      <script src="./services/authService.js"></script>
       <script src="./services/envService.js"></script>
       <script src="./services/dbService.js"></script>
       <script src="./services/modelService.js"></script>

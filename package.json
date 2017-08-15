@@ -1,6 +1,7 @@
 {
   "name": "node-angular",
-  "version": "1.0.0",
+  "version":  "17.08.15",
+  "database_dir": "./storage/db.sqlite",
   "description": "",
   "main": "main.js",
   "scripts": {

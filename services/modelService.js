@@ -84,6 +84,14 @@ angularApp.factory("$model", function($db)
     	return rows;
     }
 
+    model.first = function()
+	{
+	    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
+    	this.init();
+	    var rows = model.run(query);
+    	return rows[0];
+    }
+
     model.find = function(id)
     {
     	this._condition="where "+this._primary +"="+id;
@@ -92,7 +100,6 @@ angularApp.factory("$model", function($db)
 
     model.run = function(query)
     {
-    	console.log(query);
     	rows = $db.run(query);
     	this.init();
 	    return rows;
