@@ -1,6 +1,5 @@
-angularApp.controller('userController', function($env,$scope,$location,$users)
+angularApp.controller('userController', function($scope,$location,$users)
 {	
-    $scope.env  = $env;
     $scope.username = "";
     $scope.password = "";
 
@@ -36,9 +35,11 @@ angularApp.controller('userController', function($env,$scope,$location,$users)
 	    	if ($auth.login(info,$users))
 	        	$location.path("/dashboard");	    		
 	    	else
-	    		return $core.msg("Ooops","Senha incorreta ou usuário inexistente","error");
+	    		return $core.notify("Senha incorreta e/ou usuário inexistente","warning",['bottom','right']);
 
 	    }
 	}
+
+
 
 });

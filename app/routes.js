@@ -7,7 +7,8 @@ angularApp.config(function($routeProvider) {
         })
         .when('/dashboard', {
             templateUrl : './app/views/home/dashboard.html',
-            controller  : 'mainController'
+            controller  : 'mainController',
+            middleware  : 'Auth'
         })
 
 });

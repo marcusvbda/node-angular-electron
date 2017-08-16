@@ -1,3 +1,4 @@
+<script src="./services/envService.js"></script>
 
 <!DOCTYPE html>
     <html ng-app="APP" lang="PT-BR" style="overflow-y:hidden;overflow-x: hidden;">
@@ -66,7 +67,7 @@
                 </span>
               </div>
               <div class="col-md-4 text-center divTopo">
-                <span> {{env['name']}} </span>                
+                <span> <script type="text/javascript">document.write($env['name']);</script> </span>                
               </div>
               <div class="col-md-4 text-right divTopo">
                 <button id="btn_minimize" class="btnTopo hgrey"><img src="./assets/img/icons/minimize.png" style="height: 15px;"></button>
@@ -75,21 +76,22 @@
             </div>
           </div>
 
-      <div class="wrapper" style="overflow-y:hidden;overflow-x: hidden;">
-          <div ng-view></div>
+      <div class="wrapper" style="overflow-y:hidden;overflow-x: hidden;height: 98%">
+        <div ng-view></div>
       </div>
 
 
-      <script src="./node_modules/angular/angular.min.js"></script>
-      <script src="./node_modules/angular/angular-route.js"></script>  
-      <script src="./node_modules/jpkleemans-angular-validate/dist/angular-validate.min.js"></script>    
+      <script data-require="angular.js@1.4.8" data-semver="1.4.8"  src="./node_modules/angular/angular.min.js"></script>
+      <script data-require="angular-route@*" data-semver="1.4.8" src="./node_modules/angular/angular-route.js"></script> 
+      <script data-require="angular_middleware@2.1.2" data-semver="2.1.2" src="./node_modules/angular/angular-middleware.min.js"></script>
+      <script src="./node_modules/angular/angular-validate.js"></script>    
 
-   
+
            
       <script src="./app/app.js"></script>
       <script src="./app/routes.js"></script>
+      <script src="./app/middleware.js"></script>
       <script src="./services/authService.js"></script>
-      <script src="./services/envService.js"></script>
       <script src="./services/dbService.js"></script>
       <script src="./services/modelService.js"></script>
       <script src="./app/controllers/mainController.js"></script>

@@ -24,3 +24,11 @@ $auth.login = function(info,model)
     	return false;
     }
 }
+
+$auth.check = function ()
+{
+    if (this.user.length!=[])
+        return true;
+    else
+        return false;
+}

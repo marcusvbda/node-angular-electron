@@ -36,6 +36,23 @@ $core.confirm = function(title,text,icon,func,btn)
 	});
 };
 
+$core.notify = function(msg,type,side)
+{
+	$.notify(
+	{
+    	icon: 'notifications',
+    	message: msg
+    },{
+        type: type,
+        timer: 500,
+        placement: {
+            from: side[0],
+            align: side[1]
+        }
+    });
+};
+
+
 $core.date = function()
 {
 	var date = new Date();
