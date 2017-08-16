@@ -1,6 +1,7 @@
 var $auth = {};
 
-$auth.user  = [];
+$auth.user   = [];
+$auth.loged  = false;
 
 $auth.set = function(user)
 {
@@ -15,20 +16,26 @@ $auth.login = function(info,model)
     				.get();
     if (data.length>0)
     {
+        this.loged = true;
     	this.set(data[0]);
     	return true;
     }
     else
     {
-    	this.set([]);
+        this.set([]);
+    	this.loged = false;
     	return false;
     }
 }
 
+$auth.logoff = function()
+{
+    this.set([]);
+    this.loged = false;
+    return true;
+}
+
 $auth.check = function ()
 {
-    if (this.user.length!=[])
-        return true;
-    else
-        return false;
+    return this.loged;
 }
