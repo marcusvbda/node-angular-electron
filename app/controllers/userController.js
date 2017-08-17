@@ -36,7 +36,6 @@ angularApp.controller('userController', function($scope,$location,$users)
 	        	$location.path("/dashboard");	    		
 	    	else
 	    		return $core.notify("Senha incorreta e/ou usuário inexistente","danger",['bottom','right']);
-
 	    }
 	}
 

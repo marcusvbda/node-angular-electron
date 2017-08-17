@@ -80,3 +80,7 @@ $core.time = function()
 	return hour+":"+min+":"+seg;   
 }
 
+$core.getScope = function(controller,variable)
+{
+	return $('[ng-controller="'+controller+'"]').scope()[variable];
+}

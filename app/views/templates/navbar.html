@@ -1,0 +1,33 @@
+<div ng-controller="templateController">
+  <div class="sidebar" data-color="purple" data-image="./assets/img/sidebar-1.jpg">
+
+      <div class="logo">
+        <a  class="simple-text">
+          {{env['name']}}   
+
+          {{myVar}}     
+        </a>
+      </div>
+
+      <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li id="btnDashboard">
+                    <a href="/dashboard">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li id="btnPdv">
+                    <a href="/pdv">
+                      <i class="material-icons">library_books</i>
+                      <p>PDV</p>
+                    </a>
+                </li>
+            </ul>
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#'+$core.getScope('templateController','btnActive')).toggleClass('active');
+</script>
