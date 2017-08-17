@@ -10,5 +10,10 @@ angularApp.config(function($routeProvider) {
             controller  : 'mainController',
             middleware  : 'Auth'
         })
+        .when('/pdv', {
+            templateUrl : './app/views/pdv/pdv.html',
+            controller  : 'pdvController',
+            middleware  : 'Auth'
+        })
 
 });

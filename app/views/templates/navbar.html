@@ -3,22 +3,20 @@
 
       <div class="logo">
         <a  class="simple-text">
-          {{env['name']}}   
-
-          {{myVar}}     
+          {{env['name']}}      
         </a>
       </div>
 
       <div class="sidebar-wrapper">
             <ul class="nav">
                 <li id="btnDashboard">
-                    <a href="/dashboard">
+                    <a ng-click="loadPage('/dashboard')">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li id="btnPdv">
-                    <a href="/pdv">
+                    <a ng-click="loadPage('/pdv')">
                       <i class="material-icons">library_books</i>
                       <p>PDV</p>
                     </a>
