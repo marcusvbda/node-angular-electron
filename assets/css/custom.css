@@ -16,15 +16,28 @@
   background-color:transparent;
   border:none;
 }
+.hred
+{
+  opacity: 1;
+  transition: opacity .5s ease-out;
+}
 .hred:hover
 {
   background-color:red;
   opacity: 0.5;
+  transition: opacity .5s ease-out;
 }
+.hgrey:hover
+{       
+  opacity: 1;
+  transition: opacity .5s ease-out;
+}
+
 .hgrey:hover
 {
   background-color:grey;        
   opacity: 0.5;
+  transition: opacity .5s ease-out;
 }
 
 .vertical-center 
@@ -34,4 +47,17 @@
 
   display: flex;
   align-items: center;
+}
+
+.caixaAberto
+{
+  opacity: 0.5;
+  transition: opacity .5s ease-out;
+
+}
+
+.caixaAberto:hover
+{
+  opacity: 1;
+  transition: opacity .5s ease-out;
 }

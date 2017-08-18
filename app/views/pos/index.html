@@ -1,0 +1,51 @@
+<div ng-include="'./app/views/templates/navbar.html'" ng-init="btnActive='btnPos'"></div>
+
+<div ng-controller="posIndex">
+  	<div class="main-panel">
+
+	    <div class="content">
+	      	<div class="container-fluid">
+
+	          	<h1>Caixa Aberto</h1>
+				<div ng-if="posIsOpen()"> 
+					
+
+					<a onclick="teste()">
+						<div class="col-md-12 caixaAberto">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="green">
+									<i class="material-icons">store</i>
+								</div>
+								<div class="card-content">
+									<p class="category">#{{pos.id}}</p>
+									<h3 class="title">R$ {{pos.opening_balance}}</h3>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										<i class="material-icons">date_range</i> Aberto em {{pos.dt_opening}} as {{pos.time_opening}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+
+
+
+				</div>   
+				<div ng-if="!posIsOpen()"> 
+	   				<h1>NAO TEM CAIXA ABERTO</h1> 
+				</div> 		
+
+	      	</div>
+	    </div>
+
+ 	</div>
+</div>
+
+
+<script type="text/javascript">
+	function teste()
+	{
+		alert('teste');
+	}
+</script>

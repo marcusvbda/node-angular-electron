@@ -1,4 +1,4 @@
-angularApp.controller('mainController', function($scope)
+angularApp.controller('mainIndex', function($scope)
 {	
   		
 	

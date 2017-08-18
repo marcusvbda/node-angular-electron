@@ -6,3 +6,12 @@ angularApp.factory("$users", function($model)
 	$model._table   = "users";
 	return users;
 });
+
+
+angularApp.factory("$pos", function($model)
+{
+	var pos = $model;
+	$model._primary = "id";
+	$model._table   = "pos";
+	return pos;
+});

@@ -1,4 +1,4 @@
-angularApp.controller('userController', function($scope,$location,$users)
+angularApp.controller('userLogin', function($scope,$location,$users)
 {	
     $scope.username = "";
     $scope.password = "";
@@ -38,7 +38,6 @@ angularApp.controller('userController', function($scope,$location,$users)
 	    		return $core.notify("Senha incorreta e/ou usuário inexistente","danger",['bottom','right']);
 	    }
 	}
-
 
 
 });

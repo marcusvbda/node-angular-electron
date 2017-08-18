@@ -1,4 +1,4 @@
-<div ng-controller="templateController">
+<div ng-controller="templateNavbar">
   <div class="sidebar" data-color="purple" data-image="./assets/img/sidebar-1.jpg">
 
       <div class="logo">
@@ -15,10 +15,10 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li id="btnPdv">
-                    <a ng-click="loadPage('/pdv')">
+                <li id="btnPos">
+                    <a ng-click="loadPage('/pos')">
                       <i class="material-icons">library_books</i>
-                      <p>PDV</p>
+                      <p>Caixa</p>
                     </a>
                 </li>
             </ul>
@@ -27,5 +27,5 @@
 </div>
 
 <script type="text/javascript">
-  $('#'+$core.getScope('templateController','btnActive')).toggleClass('active');
+  $('#'+$core.getScope('templateNavbar','btnActive')).toggleClass('active');
 </script>

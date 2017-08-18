@@ -3,16 +3,16 @@ angularApp.config(function($routeProvider) {
 
         .when('/', {
             templateUrl : './app/views/users/login.html',
-            controller  : 'userController'
+            controller  : 'userLogin'
         })
         .when('/dashboard', {
-            templateUrl : './app/views/home/dashboard.html',
-            controller  : 'mainController',
+            templateUrl : './app/views/main/index.html',
+            controller  : 'mainIndex',
             middleware  : 'Auth'
         })
-        .when('/pdv', {
-            templateUrl : './app/views/pdv/pdv.html',
-            controller  : 'pdvController',
+        .when('/pos', {
+            templateUrl : './app/views/pos/index.html',
+            controller  : 'posIndex',
             middleware  : 'Auth'
         })
 
