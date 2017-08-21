@@ -1,24 +1,23 @@
 <div ng-include="'./app/views/templates/navbar.html'" ng-init="btnActive='btnPos'"></div>
 
-<div ng-controller="posIndex">
+<div>
   	<div class="main-panel">
 
-	    <div class="content">
+	    <div class="content" style="margin-top: 0px; padding-top: 0px;">
 	      	<div class="container-fluid">
 
-	          	<h1>Caixa Aberto</h1>
-				<div ng-if="posIsOpen()"> 
-					
+				<div ng-if="posIsOpen==true"> 
+	          		<h1>Caixa Aberto</h1>				
 
-					<a onclick="teste()">
+					<a ng-click="teste()">
 						<div class="col-md-12 caixaAberto">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="green">
 									<i class="material-icons">store</i>
 								</div>
 								<div class="card-content">
-									<p class="category">#{{pos.id}}</p>
-									<h3 class="title">R$ {{pos.opening_balance}}</h3>
+									<p class="category">Número : #{{pos.id}}</p>
+									<h3 class="title">R$ {{pos.real_balance}}</h3>
 								</div>
 								<div class="card-footer">
 									<div class="stats">
@@ -32,8 +31,94 @@
 
 
 				</div>   
-				<div ng-if="!posIsOpen()"> 
-	   				<h1>NAO TEM CAIXA ABERTO</h1> 
+				<div ng-if="posIsOpen==false"> 
+	          		<h1>Abertura de Caixa</h1>				
+	   				
+	   				<div class="row" id="divBtnNewPos">
+	   					<div class="col-md-12">
+							<div class="alert alert-warning">
+					             <div class="container-fluid">
+									 <div class="alert-icon">
+										<i class="material-icons">warning</i>
+									</div>
+					                 <b>Aviso !!</b> Não existe um caixa aberto, clique em "novo caixa" para abrir um novo.
+					            </div>
+					        </div>
+					    </div>
+				        <div class="col-md-12" >
+				        	<div class="text-right">
+				        		<button class="btn btn-primary" onclick="newPos()">Novo Caixa</button>
+				        	</div>
+				        </div>  
+				    </div>
+				    <div class="row">
+				    	<div id="divFrmNewPos" style="display: none;">
+				        	
+
+				    		<div class="col-md-12">
+		                        <div class="card">
+		                            <div class="card-header" data-background-color="purple">
+		                                <h4 class="title">Novo Caixa</h4>
+										<p class="category">Complete as informações</p>
+		                            </div>
+		                            <div class="card-content">
+
+		                                <form onsubmit="return false;" name="frm_new_pos" ng-submit="createNewPos(frm_new_pos,opening_balance,time_opening)" ng-validate="validationOptions">
+		                                    <div class="row">
+		                                        <div class="col-md-2">
+													<div class="form-group label-floating">
+														<label class="control-label">Caixa</label>
+														<input type="text" class="form-control" name="nextPos" ng-model="nextPos" disabled>
+														<input type="text" hidden name="id" id="id" ng-model="nextPos" disabled>
+													</div>
+		                                        </div>
+		                                        <div class="col-md-2">
+													<div class="form-group label-floating">
+														<label class="control-label">Responsável</label>
+														<input type="text" hidden name="user_id" ng-model="user.id" disabled>
+														<input type="text" class="form-control" name="user" id="user" ng-model="user.username" disabled>
+													</div>
+		                                        </div>
+		                                        <div class="col-md-3">
+													<div class="form-group label-floating">
+														<label class="control-label">Data Abertura</label>
+														<input type="text" class="form-control" disabled name="dt_opening" ng-model="dt_opening">
+													</div>
+		                                        </div>
+		                                        <div class="col-md-3">
+													<div class="form-group label-floating">
+														<label class="control-label">Hora Abertura</label>
+														<input type="text" class="form-control" disabled name="time_opening" ng-model="time_opening">
+													</div>
+		                                        </div>
+		                                    	<div class="col-md-2">
+													<div class="form-group label-floating">
+														<label class="control-label">Saldo Inicial</label>
+														<input type="number" class="form-control" name="opening_balance" ng-model="opening_balance" 
+														step="0.01" autofocus min="0" required>			
+													</div>
+		                                        </div>
+		                                    </div>
+
+		                                    
+
+
+		                                    <button class="btn btn-danger pull-left" onclick="abort()">Cancelar</button>
+		                                    <button type="submit" class="btn btn-primary pull-right">Criar Caixa</button>
+		                                    <div class="clearfix"></div>
+		                                </form>
+
+		                            </div>
+		                        </div>
+		                    </div>
+
+
+				        </div>
+				    </div> 
+
+
+
+
 				</div> 		
 
 	      	</div>
@@ -44,8 +129,23 @@
 
 
 <script type="text/javascript">
-	function teste()
+function newPos()
+{
+	$('#divBtnNewPos').toggle(150);
+	$('#divFrmNewPos').toggle(150);
+	$('#opening_balance').focus();
+}
+function abort()
+{
+	$core.confirm("Confirmação","Deseja abandonar formulário de criação de novo caixa ?",function()
 	{
-		alert('teste');
-	}
+		$('#divBtnNewPos').toggle(150);
+		$('#divFrmNewPos').toggle(150);
+	});
+}
+
+window.setInterval(function()
+{
+  $('#time_opening').val($core.time());
+},1000);
 </script>

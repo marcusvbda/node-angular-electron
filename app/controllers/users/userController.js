@@ -1,5 +1,6 @@
-angularApp.controller('userLogin', function($scope,$location,$users)
-{	
+angularApp.controller('userLogin', function($scope,$location,$db)
+{		
+	$users = $db.table('users');
     $scope.username = "";
     $scope.password = "";
 

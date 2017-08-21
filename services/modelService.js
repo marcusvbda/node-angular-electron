@@ -1,5 +1,5 @@
 "USE STRICT";
-angularApp.factory("$model", function()
+angularApp.factory("$db", function()
 {
 	var model      = {};
 	model._primary = "id";
@@ -79,41 +79,52 @@ angularApp.factory("$model", function()
 	model.get = function()
 	{
 	    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
-    	this.init();
-	    var rows = model.run(query);
-    	return rows;
-    }
+		this.init();
+	    var rows = this.run(query);
+		return rows;
+	}
 
-    model.first = function()
+	model.first = function()
 	{
 	    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
-    	this.init();
-	    var rows = model.run(query);
-    	return rows[0];
-    }
+		this.init();
+		console.log(query);
+	    var rows = this.run(query);
+	    if($core.isset(rows))
+	    	return rows[0];
+	    else
+	    	return null;
+	}
 
-    model.find = function(id)
-    {
-    	this._condition="where "+this._primary +"="+id;
-    	return this;
-    }
+	model.find = function(id)
+	{
+		this._condition="where "+this._primary +"="+id;
+		return this;
+	}
 
-    model.run = function(query)
-    {
-     	var db = $db.init();
-    	rows = db.run(query);
-    	this.init();
+	model.run = function(query)
+	{
+	 	var db = $db.init();
+		rows = db.run(query);
+		this.init();
 	    return rows;
-    }
+	}
 
-    model.init = function()
-    {
-    	this._primary = "id";
-    	this._query = "select";
-    	this._field = "*";
+	model.init = function()
+	{
+		this._primary = "id";
+		this._query = "select";
+		this._field = "*";
 	    this._unions = "";
 	    this._condition = "where 1=1";
-    }
+	}
+
+	model.max = function(field)
+	{
+		this._field = "max("+field+") as max";
+		return this.first().max;
+	}
+
 
 	return model;
 });
