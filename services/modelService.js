@@ -1,5 +1,5 @@
 "USE STRICT";
-angularApp.factory("$model", function($db)
+angularApp.factory("$model", function()
 {
 	var model      = {};
 	model._primary = "id";
@@ -100,7 +100,8 @@ angularApp.factory("$model", function($db)
 
     model.run = function(query)
     {
-    	rows = $db.run(query);
+     	var db = $db.init();
+    	rows = db.run(query);
     	this.init();
 	    return rows;
     }

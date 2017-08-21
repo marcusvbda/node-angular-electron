@@ -91,3 +91,8 @@ $core.pad = function(num, places)
     var zero = places - num.toString().length + 1;
   	return Array(+(zero > 0 && zero)).join("0") + num;
 }
+
+$core.isset = function(object)
+{
+	return (typeof object !=='undefined');
+}
