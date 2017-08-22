@@ -19,17 +19,17 @@ $core.simplemsg = function(text)
 	return swal(text)
 };
 
-$core.confirm = function(title,text,icon,func,btn)
+$core.confirm = function(title,text,func)
 {
 	return 	swal({
 	  title: title,
 	  text: text,
-	  type: icon,
+	  type: "warning",
 	  showCancelButton: true,
 	  confirmButtonColor: '#3085d6',
 	  cancelButtonColor: '#d33',
-	  confirmButtonText: btn[0],
-	  cancelButtonText:  btn[1],
+	  confirmButtonText: "Sim",
+	  cancelButtonText:  "Não",
 	}).then(function()
 	{
 		func()

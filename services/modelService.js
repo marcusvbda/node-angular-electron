@@ -72,15 +72,15 @@ angularApp.factory("$db", function()
 
 	model.where = function(condition)
 	{
-		this._condition += " and "+this._table+"."+condition[0]+" "+condition[1]+" '"+condition[2]+"' " ;
+		this._condition += " and "+condition[0]+" "+condition[1]+" '"+condition[2]+"' " ;
 		return this;
 	}
 
 	model.get = function()
 	{
 	    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
-		this.init();
 	    var rows = this.run(query);
+		this.init();	    
 		return rows;
 	}
 
@@ -88,7 +88,6 @@ angularApp.factory("$db", function()
 	{
 	    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
 		this.init();
-		console.log(query);
 	    var rows = this.run(query);
 	    if($core.isset(rows))
 	    	return rows[0];

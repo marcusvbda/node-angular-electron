@@ -11,8 +11,8 @@ $auth.set = function(user)
 $auth.login = function(info,model)
 {
 	var data = model
-    		.where(["username","=",info.username])
-    			.where(["password","=",info.password])
+    		.where(["usuario","=",info.usuario])
+    			.where(["senha","=",info.senha])
     				.get();
     if (data.length>0)
     {

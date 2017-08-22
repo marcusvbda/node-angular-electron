@@ -2,17 +2,17 @@ angularApp.config(function($routeProvider) {
     $routeProvider
 
         .when('/', {
-            templateUrl : './app/views/users/login.html',
-            controller  : 'userLogin'
+            templateUrl : './app/views/usuarios/login.html',
+            controller  : 'usuarios.Login'
         })
         .when('/dashboard', {
-            templateUrl : './app/views/main/index.html',
-            controller  : 'mainIndex',
+            templateUrl : './app/views/principal/index.html',
+            controller  : 'principal.Index',
             middleware  : 'Auth'
         })
-        .when('/pos', {
-            templateUrl : './app/views/pos/index.html',
-            controller  : 'posIndex',
+        .when('/caixas', {
+            templateUrl : './app/views/caixas/index.html',
+            controller  : 'caixas.Index',
             middleware  : 'Auth'
         })
 

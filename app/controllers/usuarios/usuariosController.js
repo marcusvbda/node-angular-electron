@@ -1,27 +1,28 @@
-angularApp.controller('userLogin', function($scope,$location,$db)
+angularApp.controller('usuarios.Login', function($scope,$location,$db)
 {		
-	$users = $db.table('users');
-    $scope.username = "";
-    $scope.password = "";
+	$users = $db.table('usuarios');
+	$scope.frm = {};
+    $scope.frm.usuario = "";
+    $scope.frm.senha = "";
 
     $scope.validationOptions = 
     {
 	    rules: {
-	        username: {
+	        usuario: {
 	            required: true,
 	            maxlength:50
 	        },
-	        password: {
+	        senha: {
 	            required: true,
 	            maxlength:50
 	        }
 	    },
 	    messages: {
-	        username: {
+	        usuario: {
 	            required: "Este campo é obrigatório",
 	            maxlength: "O limite de caracteres é 50"
 	        },
-	        password: {
+	        senha: {
 	            required: "Este campo é obrigatório",
 	            maxlength: "O limite de caracteres é 50"
 	        }
@@ -32,7 +33,7 @@ angularApp.controller('userLogin', function($scope,$location,$db)
     {
 	    if(form.validate()) 
 	    {
-	    	var info = {"username":$scope.username.trim(),"password":$core.md5($scope.password.trim())};
+	    	var info = {"usuario":$scope.frm.usuario.trim(),"senha":$core.md5($scope.frm.senha.trim())};
 	    	if ($auth.login(info,$users))
 	        	$location.path("/dashboard");	    		
 	    	else

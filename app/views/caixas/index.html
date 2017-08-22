@@ -6,7 +6,7 @@
 	    <div class="content" style="margin-top: 0px; padding-top: 0px;">
 	      	<div class="container-fluid">
 
-				<div ng-if="posIsOpen==true"> 
+				<div ng-if="caixaAberto==true"> 
 	          		<h1>Caixa Aberto</h1>				
 
 					<a ng-click="teste()">
@@ -16,12 +16,13 @@
 									<i class="material-icons">store</i>
 								</div>
 								<div class="card-content">
-									<p class="category">Número : #{{pos.id}}</p>
-									<h3 class="title">R$ {{pos.real_balance}}</h3>
+									<p class="category"><strong>Número : </strong>#{{caixa.id}}</p>
+									<p class="category"><strong>Usuário Responsável : </strong>{{caixa.usuario}}</p>
+									<h3 class="title"><strong>Saldo Atual : </strong>R$ {{caixa.saldo_atual}}</h3>
 								</div>
 								<div class="card-footer">
 									<div class="stats">
-										<i class="material-icons">date_range</i> Aberto em {{pos.dt_opening}} as {{pos.time_opening}}
+										<i class="material-icons">date_range</i> Aberto em {{caixa.dt_abertura}} as {{caixa.hora_abertura}}
 									</div>
 								</div>
 							</div>
@@ -31,7 +32,7 @@
 
 
 				</div>   
-				<div ng-if="posIsOpen==false"> 
+				<div ng-if="caixaAberto==false"> 
 	          		<h1>Abertura de Caixa</h1>				
 	   				
 	   				<div class="row" id="divBtnNewPos">
@@ -41,7 +42,7 @@
 									 <div class="alert-icon">
 										<i class="material-icons">warning</i>
 									</div>
-					                 <b>Aviso !!</b> Não existe um caixa aberto, clique em "novo caixa" para abrir um novo.
+					                 <b>Aviso   !!</b>     Não existe um caixa aberto, clique em "novo caixa" para abrir um novo.
 					            </div>
 					        </div>
 					    </div>
@@ -63,39 +64,39 @@
 		                            </div>
 		                            <div class="card-content">
 
-		                                <form onsubmit="return false;" name="frm_new_pos" ng-submit="createNewPos(frm_new_pos,opening_balance,time_opening)" ng-validate="validationOptions">
+		                                <form onsubmit="return false;" name="form" ng-submit="criarNovoCaixa(form)" ng-validate="validationOptions">
 		                                    <div class="row">
 		                                        <div class="col-md-2">
 													<div class="form-group label-floating">
 														<label class="control-label">Caixa</label>
-														<input type="text" class="form-control" name="nextPos" ng-model="nextPos" disabled>
+														<input type="text" class="form-control" name="nextPos" ng-model="frm.proximoCaixa" disabled>
 														<input type="text" hidden name="id" id="id" ng-model="nextPos" disabled>
 													</div>
 		                                        </div>
 		                                        <div class="col-md-2">
 													<div class="form-group label-floating">
 														<label class="control-label">Responsável</label>
-														<input type="text" hidden name="user_id" ng-model="user.id" disabled>
-														<input type="text" class="form-control" name="user" id="user" ng-model="user.username" disabled>
+														<input type="text" hidden name="usuario_id" ng-model="frm.usuarios.usuario_id" disabled>
+														<input type="text" class="form-control" name="usuario" id="usuario" ng-model="frm.usuarios.usuario" disabled>
 													</div>
 		                                        </div>
 		                                        <div class="col-md-3">
 													<div class="form-group label-floating">
 														<label class="control-label">Data Abertura</label>
-														<input type="text" class="form-control" disabled name="dt_opening" ng-model="dt_opening">
+														<input type="text" class="form-control" disabled name="dt_abertura" ng-model="frm.dt_abertura">
 													</div>
 		                                        </div>
 		                                        <div class="col-md-3">
 													<div class="form-group label-floating">
 														<label class="control-label">Hora Abertura</label>
-														<input type="text" class="form-control" disabled name="time_opening" ng-model="time_opening">
+														<input type="text" class="form-control" disabled name="hora_abertura" id="hora_abertura" ng-model="frm.hora_abertura">
 													</div>
 		                                        </div>
 		                                    	<div class="col-md-2">
 													<div class="form-group label-floating">
 														<label class="control-label">Saldo Inicial</label>
-														<input type="number" class="form-control" name="opening_balance" ng-model="opening_balance" 
-														step="0.01" autofocus min="0" required>			
+														<input type="number" class="form-control" name="saldo_inicial" ng-model="frm.saldo_inicial" 
+														step="0.01" autofocus min="0" required>		
 													</div>
 		                                        </div>
 		                                    </div>
@@ -103,7 +104,7 @@
 		                                    
 
 
-		                                    <button class="btn btn-danger pull-left" onclick="abort()">Cancelar</button>
+		                                    <a class="btn btn-danger pull-left" onclick="abort()">Cancelar</a>
 		                                    <button type="submit" class="btn btn-primary pull-right">Criar Caixa</button>
 		                                    <div class="clearfix"></div>
 		                                </form>
@@ -144,8 +145,4 @@ function abort()
 	});
 }
 
-window.setInterval(function()
-{
-  $('#time_opening').val($core.time());
-},1000);
 </script>

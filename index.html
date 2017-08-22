@@ -92,10 +92,10 @@
       <script src="./services/authService.js"></script>
       <script src="./services/dbService.js"></script>
       <script src="./services/modelService.js"></script>
-      <script src="./app/controllers/main/mainController.js"></script>
-      <script src="./app/controllers/users/userController.js"></script>
-      <script src="./app/controllers/template/templateController.js"></script>
-      <script src="./app/controllers/pos/posController.js"></script>
+      <script src="./app/controllers/principal/principalController.js"></script>
+      <script src="./app/controllers/usuarios/usuariosController.js"></script>
+      <script src="./app/controllers/templates/templateController.js"></script>
+      <script src="./app/controllers/caixas/caixasController.js"></script>
     </body>
 </html>
 
@@ -115,10 +115,10 @@ $(document).ready(function()
     const { remote } = require('electron');
     $("#btn_exit").click(function()
     {
-      $core.confirm("Confirmação","Deseja mesmo sair do sistema ?","warning",function()
+      $core.confirm("Confirmação","Deseja mesmo sair do sistema ?",function()
       {
         remote.BrowserWindow.getFocusedWindow().close();
-      },["Sim","Não"]); 
+      }); 
     });
     $("#btn_minimize").click(function()
     {
