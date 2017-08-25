@@ -1,6 +1,5 @@
-angularApp.controller('usuarios.Login', function($scope,$location,$db)
+angularApp.controller('usuarios.Login', function($scope,$location,$usuarios,$caixas)
 {		
-	$users = $db.table('usuarios');
 	$scope.frm = {};
     $scope.frm.usuario = "";
     $scope.frm.senha = "";
@@ -34,12 +33,15 @@ angularApp.controller('usuarios.Login', function($scope,$location,$db)
 	    if(form.validate()) 
 	    {
 	    	var info = {"usuario":$scope.frm.usuario.trim(),"senha":$core.md5($scope.frm.senha.trim())};
-	    	if ($auth.login(info,$users))
+	    	if ($auth.login(info,$usuarios))
 	        	$location.path("/dashboard");	    		
 	    	else
 	    		return $core.notify("Senha incorreta e/ou usuário inexistente","danger",['bottom','right']);
 	    }
 	}
+
+
+
 
 
 });

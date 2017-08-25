@@ -92,6 +92,7 @@
       <script src="./services/authService.js"></script>
       <script src="./services/dbService.js"></script>
       <script src="./services/modelService.js"></script>
+      <script src="./app/model/models.js"></script>
       <script src="./app/controllers/principal/principalController.js"></script>
       <script src="./app/controllers/usuarios/usuariosController.js"></script>
       <script src="./app/controllers/templates/templateController.js"></script>
@@ -139,22 +140,5 @@ $(document).on('keydown', 'input' ,'textarea', function(e)
     return false;
   }
 });
-
-$.fn.getData = function()
-{
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name] !== undefined) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};  
 
 </script>

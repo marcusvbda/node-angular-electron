@@ -1,6 +1,5 @@
-angularApp.controller('caixas.Index', function($scope,$route,$db)
+angularApp.controller('caixas.Index', function($scope,$route,$caixas,$usuarios)
 {	
-	var $caixas = $db.table('caixas');
 	$scope.caixaAberto = ($caixas.where(['status','=','A']).get().length>0);
 
 	$scope.frm = {};
@@ -20,7 +19,7 @@ angularApp.controller('caixas.Index', function($scope,$route,$db)
 	{
 		var caixa = $caixas
 		.select('caixas.*,usuarios.usuario')
-			.join('usuarios',['usuarios.id','=','caixas.usuario_id'])
+			.join($usuarios,['usuario_id','=','id'])
 				.where(['caixas.status','=','A'])
 					.first();
 	    if($core.isset(caixa))
