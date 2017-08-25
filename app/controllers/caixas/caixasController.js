@@ -10,7 +10,7 @@ angularApp.controller('caixas.Index', function($scope,$route,$caixas,$usuarios)
 
 	if($scope.caixaAberto==false)
 	{
-		$scope.proximoCaixaReal = $caixas.max("id") + 1;
+		$scope.proximoCaixaReal = $caixas.max("id").first().max_id + 1;
 		$scope.frm.proximoCaixa = '#'+$core.pad($scope.proximoCaixaReal,8);		
 	}
 

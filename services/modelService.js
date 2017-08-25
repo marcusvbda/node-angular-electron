@@ -9,6 +9,8 @@ angularApp.factory("$db", function()
 		this._field   = "*";
 		this._unions  = "";
 		this._condition = "where 1=1";
+		this._order   = "";
+		this._group   = "";
 
 		// $db.table('mytable')  equivalente a $model
 		this.table = function(table)
@@ -28,6 +30,38 @@ angularApp.factory("$db", function()
 		this.join = function(model,condition)
 		{
 			this._unions += " join "+model._table+" on "+this._table+"."+condition[0]+condition[1]+model._table+"."+condition[2];
+			// console.log(this._unions);
+			return this;
+		}
+
+		// $model1.leftjoin($model2,["key_model1","=","key_model2"]);
+		this.leftjoin = function(model,condition)
+		{
+			this._unions += " left join "+model._table+" on "+this._table+"."+condition[0]+condition[1]+model._table+"."+condition[2];
+			// console.log(this._unions);
+			return this;
+		}
+
+		// $model1.innerjoin($model2,["key_model1","=","key_model2"]);
+		this.innerjoin = function(model,condition)
+		{
+			this._unions += " inner join "+model._table+" on "+this._table+"."+condition[0]+condition[1]+model._table+"."+condition[2];
+			// console.log(this._unions);
+			return this;
+		}
+
+		// $model1.rightjoin($model2,["key_model1","=","key_model2"]);
+		this.rightjoin = function(model,condition)
+		{
+			this._unions += " right join "+model._table+" on "+this._table+"."+condition[0]+condition[1]+model._table+"."+condition[2];
+			// console.log(this._unions);
+			return this;
+		}
+
+		// $model1.fullouterjoin($model2,["key_model1","=","key_model2"]);
+		this.fullouterjoin = function(model,condition)
+		{
+			this._unions += " full outer join "+model._table+" on "+this._table+"."+condition[0]+condition[1]+model._table+"."+condition[2];
 			// console.log(this._unions);
 			return this;
 		}
@@ -90,17 +124,30 @@ angularApp.factory("$db", function()
 		// $model.where(condition).get();
 		this.get = function()
 		{
-		    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
-		    // console.log(query);
+		    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition+" "+this._group+" "+this._order;		    
 		    var rows = this.run(query);
 			this.init();	    
 			return rows;
 		}
 
+		// $model.where(['id','>','0']).orderby("id","desc").get();
+		this.orderby = function(field,type)
+		{
+		    this._order="order by "+field+" "+type;
+			return this;
+		}
+
+		// $model.where(['id','>','0']).groupby("codigo").get();
+		this.groupby = function(field)
+		{
+		    this._group="group by "+field;
+			return this;
+		}
+
 		// $model.all(); equivalente a $model.get(); sem condição
 		this.all = function()
 		{
-		    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions;
+		    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._group+" "+this._order;	
 		    // console.log(query);
 		    var rows = this.run(query);
 			this.init();	    
@@ -110,8 +157,9 @@ angularApp.factory("$db", function()
 		// $model.where(condition).first(); primeiro resultado
 		this.first = function()
 		{
-		    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition;
+		    var query = "select "+this._field+" from "+this._table+" "+" "+this._unions+" "+this._condition+" "+this._group+" "+this._order;	
 			this.init();
+			// console.log(query);
 		    var rows = this.run(query);
 		    if($core.isset(rows))
 		    	return rows[0];
@@ -129,16 +177,24 @@ angularApp.factory("$db", function()
 		// $model.max("id").get();  traz o valor do maior campo parametro
 		this.max = function(field)
 		{
-			this._field = "max("+field+") as max";
-			return this.first().max;
+			this._field = "max("+field+") as max_"+field;
+			return this;
 		}
 
 		// $model.max("id").get();  traz o valor do menor campo parametro
 		this.min = function(field)
 		{
-			this._field = "min("+field+") as min";
-			return this.first().min;
+			this._field = "min("+field+") as min_"+field;
+			return this;
 		}
+
+		// $model.sum("id").get();  traz o valor do menor campo parametro
+		this.sum = function(field)
+		{
+			this._field = "sum("+field+") as sum_"+field;
+			return this;
+		}
+
 
 		this.run = function(query)
 		{
